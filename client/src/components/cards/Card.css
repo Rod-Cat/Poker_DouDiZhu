@@ -1,0 +1,165 @@
+/**
+ * 扑克牌CSS样式
+ * 纯CSS绘制标准扑克牌外观
+ */
+
+/* ==================== 卡牌基础 ==================== */
+.poker-card {
+  width: var(--card-width, 72px);
+  height: var(--card-height, 102px);
+  border-radius: 8px;
+  background: #ffffff;
+  border: 2px solid #d0d0d0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, margin-top 0.2s ease;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.poker-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  border-color: #bbb;
+}
+
+.poker-card:active {
+  transform: translateY(-2px);
+}
+
+/* ==================== 选中状态 ==================== */
+.poker-card.card-selected {
+  transform: translateY(-20px);
+  border-color: #ffd700;
+  box-shadow: 0 6px 24px rgba(255, 215, 0, 0.5);
+  border-width: 2.5px;
+}
+
+.poker-card.card-selected:hover {
+  transform: translateY(-22px);
+}
+
+/* ==================== 颜色 ==================== */
+.poker-card.card-red {
+  color: #d32f2f;
+}
+.poker-card.card-black {
+  color: #212121;
+}
+
+/* ==================== 小尺寸 ==================== */
+.poker-card.card-small {
+  width: var(--card-small-width, 50px);
+  height: var(--card-small-height, 72px);
+  border-radius: 5px;
+  border-width: 1.5px;
+}
+.poker-card.card-small .card-rank-text {
+  font-size: 11px;
+}
+.poker-card.card-small .card-suit-text {
+  font-size: 8px;
+}
+.poker-card.card-small .card-center-icon {
+  font-size: 20px;
+}
+
+/* ==================== 角标 ==================== */
+.card-corner {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.1;
+}
+
+.card-corner-tl {
+  top: 4px;
+  left: 5px;
+}
+
+.card-corner-br {
+  bottom: 4px;
+  right: 5px;
+  transform: rotate(180deg);
+}
+
+.card-rank-text {
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.card-suit-text {
+  font-size: 10px;
+  line-height: 1;
+}
+
+/* ==================== 中央花色 ==================== */
+.card-center-suit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.card-center-icon {
+  font-size: 26px;
+}
+
+/* ==================== 大小王 ==================== */
+.poker-card.card-joker .card-center-suit {
+  font-size: 32px;
+}
+
+.card-joker-icon {
+  font-size: 38px;
+}
+
+/* 大王红色，小王黑色 */
+.poker-card.card-joker.card-red {
+  color: #d32f2f;
+}
+.poker-card.card-joker.card-black {
+  color: #212121;
+}
+
+/* ==================== 卡牌背面 ==================== */
+.poker-card.card-back {
+  background: linear-gradient(135deg, #1a5276, #2471a3);
+  border: 2px solid #0d3b4f;
+  cursor: default;
+}
+
+.card-back-inner {
+  position: absolute;
+  inset: 5px;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  border-radius: 4px;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 4px,
+    rgba(255, 255, 255, 0.05) 4px,
+    rgba(255, 255, 255, 0.05) 8px
+  );
+}
+
+.card-back-inner::after {
+  content: '🃏';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 18px;
+  opacity: 0.6;
+}
+
+.poker-card.card-back:hover {
+  transform: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  border-color: #0d3b4f;
+}
