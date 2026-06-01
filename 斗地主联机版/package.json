@@ -1,0 +1,25 @@
+{
+  "name": "poker-game",
+  "version": "1.0.0",
+  "description": "联机斗地主游戏 - 局域网多人实时对战",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -n server,client -c blue,green \"node server/index.js\" \"cd client && npx vite --host\"",
+    "build": "cd client && npx vite build",
+    "start": "node server/index.js",
+    "setup": "npm install && cd client && npm install && cd .. && npm run build"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.21.0",
+    "socket.io": "^4.7.5",
+    "sql.js": "^1.14.1",
+    "uuid": "^10.0.0"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.0",
+    "esbuild": "^0.28.0",
+    "pkg": "^5.8.1"
+  }
+}
